@@ -21,22 +21,17 @@
 :root { 
   --background-color: #ffffff; /* Background color for the entire website, including individual sections */
   --default-color: #444444; /* Default color used for the majority of the text content across the entire website */
-  --heading-color: #2c4964; /* Color for headings, subheadings and title throughout the website */
-  --accent-color: #1977cc; /* Accent color that represents your brand on the website. It's used for buttons, links, and other elements that need to stand out */
+  --heading-color: #060B25; /* Color for headings, subheadings and title throughout the website */
+  --accent-color: #315599; /* Accent color that represents your brand on the website. It's used for buttons, links, and other elements that need to stand out */
   --surface-color: #ffffff; /* The surface color is used as a background of boxed elements within sections, such as cards, icon boxes, or other elements that require a visual separation from the global background. */
   --contrast-color: #ffffff; /* Contrast color for text, ensuring readability against backgrounds of accent, heading, or default colors. */
 }
 
 /* Nav Menu Colors - The following color variables are used specifically for the navigation menu. They are separate from the global colors to allow for more customization options */
 :root {
-  --nav-color: #2c4964;  /* The default color of the main navmenu links */
-  --nav-hover-color: #1977cc; /* Applied to main navmenu links when they are hovered over or active */
+  --nav-color: #315599;  /* The default color of the main navmenu links */
+  --nav-hover-color:#315599; /* Applied to main navmenu links when they are hovered over or active */
   --nav-mobile-background-color: #ffffff; /* Used as the background color for mobile navigation menu */
-  --nav-dropdown-background-color: #ffffff; /* Used as the background color for dropdown items that appear when hovering over primary navigation items */
-  --nav-dropdown-color: #2c4964; /* Used for navigation links of the dropdown items in the navigation menu. */
-  --nav-dropdown-hover-color: #1977cc; /* Similar to --nav-hover-color, this color is applied to dropdown navigation links when they are hovered over. */
-}
-
 /* Color Presets - These classes override global colors when applied to any section or element, providing reuse of the sam color scheme. */
 
 .light-background {
@@ -80,18 +75,27 @@ a:hover {
 h1,
 
 h2,
-h3,
+h3
 h4,
-h5,
+h5 {
+  {
+  padding: 50px;
+}
+
+}
 h6 {
   color: var(--heading-color);
   font-family: var(--heading-font);
 }
 
 .btn {
+  color: white;
   border-radius: 50px;
   padding: 15px;
-  margin-top: 30px;
+  padding-left: 30px;
+  padding-right: 30px;
+  margin-top: 50px;
+  font-weight: 600;
 }
 
 /* Pulsating Play Button
@@ -1023,46 +1027,10 @@ section,
 /*--------------------------------------------------------------
 # About Section
 --------------------------------------------------------------*/
+
 .about .content h3 {
   font-size: 2rem;
   font-weight: 700;
-}
-
-.about .content ul {
-  list-style: none;
-  padding: 0;
-}
-
-.about .content ul li {
-  display: flex;
-  align-items: flex-start;
-  margin-top: 40px;
-}
-
-.about .content ul i {
-  flex-shrink: 0;
-  font-size: 48px;
-  color: var(--accent-color);
-  margin-right: 20px;
-}
-
-.about .content ul h5 {
-  font-size: 18px;
-  font-weight: 700;
-}
-
-.about .content ul p {
-  font-size: 15px;
-}
-
-.about .content p:last-child {
-  margin-bottom: 0;
-}
-
-.about .pulsating-play-btn {
-  position: absolute;
-  left: calc(50% - 47px);
-  top: calc(50% - 47px);
 }
 
 /*--------------------------------------------------------------
