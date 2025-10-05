@@ -54,6 +54,7 @@
           <ul>
             <li><a href="#hero" class="active">Home<br></a></li>
             <li><a href="#about">About</a></li>
+            <li><a href="#services">Services</a></li>
             <li><a href="#genome-explorer">Genome Explorer</a></li>
             <li><a href="#doctors">Research</a></li>
             <li><a href="#contact">Contact</a></li>
@@ -92,8 +93,8 @@
     <section id="about" class="about section">
 
       <div class="container d-flex justify-content-center">
-        <div class="col-lg-6 content mx-auto text-center" data-aos="fade-up" data-aos-delay="100">
-            <h3>About Bioinformatics</h3>
+        <div class="section-title text-center mb-5">
+          <h2 class="fw-bold">About Bioinformatics</h2>
             <p>
               Bridging biology, technology, and data science for revolutionary healthcare solutions
             </p>
@@ -104,36 +105,139 @@
     </section><!-- /About Section -->
 
     <!-- Stats Section -->
-    <section id="stats" class="stats section light-background">
-
+     <section id="stats" class="stats section light-background">
       <div class="container" data-aos="fade-up" data-aos-delay="100">
-        
-        <div class="row gy-4 justify-content-center"> 
+        <div class="row gy-4 justify-content-center">
 
-          <div class="col-lg-3 col-md-6 d-flex flex-column justify-content-center align-items-center">
-            <i class="bi bi-capsule"></i>
-            <div class="stats-item">                                
-              <h5 class="mt-3 mb-3">Personalized Medicine</h3> 
-              <p>Tailoring treatment strategies based on individual genetic profiles maximizes therapeutic efficacy while minimizing adverse reactions through precision healthcare approaches.</p>
-            </div>
-          </div><!-- End Stats Item -->
+      <!-- Box 1 -->
+      <div class="col-lg-4 col-md-6 d-flex align-items-stretch">
+        <div class="stats-item text-center p-4 rounded-5 shadow-sm">
+          <i class="bi bi-capsule display-4 mb-3"></i>
+          <h5 class="mb-2 mt-3 fw-bold">Personalized Medicine</h5>
+          <p>Tailoring treatment strategies based on individual genetic profiles maximizes therapeutic efficacy while minimizing adverse reactions through precision healthcare approaches.</p>
+        </div>
+      </div>
 
-          <div class="col-lg-3 col-md-6 d-flex flex-column justify-content-center align-items-center">
-            <i class="fa fa-flask"></i>
-            <div class="stats-item">
-              <h5 class="mt-3 mb-3">CRISPR Technology</h5>
-              <p>Revolutionary gene-editing capabilities enable precise DNA modifications, offering unprecedented potential for treating genetic disorders and advancing therapeutic development.</p>
-            <br>
-            </div>
+      <!-- Box 2 -->
+      <div class="col-lg-4 col-md-6 d-flex align-items-stretch">
+        <div class="stats-item text-center p-4 rounded-5 shadow-sm">
+          <i class="fa fa-flask display-4 mb-3"></i>
+          <h5 class="mb-2 mt-3 fw-bold">CRISPR Technology</h5>
+          <p>Revolutionary gene-editing capabilities enable precise DNA modifications, offering unprecedented potential for treating genetic disorders and advancing therapeutic development.</p>
+        </div>
+      </div>
 
-          </div>
+      <!-- Box 3 -->
+      <div class="col-lg-4 col-md-6 d-flex align-items-stretch">
+        <div class="stats-item text-center p-4 rounded-5 shadow-sm">
+          <i class="fas fa-dna mb-3"></i>
+          <h5 class="mb-2 mt-3 fw-bold">DNA Sequencing</h5>
+          <p>Advanced sequencing technologies decode genetic information rapidly and accurately, enabling comprehensive analysis.</p>
+        </div>
+      </div>
+    
+    </section> <!-- End Stats Item -->
 
-    </section><!-- /Services Section -->
-
-    <!-- Genome Section -->
+    <!-- Modern Genome Explorer Section -->
     <section id="genome-explorer" class="genome-explorer section">
-      <h2>Genome Explorer</h2>
-    </section>
+      
+      <div class="container" data-aos="fade-up">
+    
+    <!-- Section Title -->
+    <div class="section-title text-center mb-5">
+      <h2 class="fw-bold">Interactive Genome Explorer</h2>
+      <p>Explore genetic traits and their variations across different chromosomes</p>
+    </div>
+
+    <!-- Statistics Dashboard -->
+    <div class="row gy-4 mb-5 justify-content-center">
+      <div class="col-lg-3 col-md-6">
+        <div class="modern-stat-card primary-gradient">
+          <div class="stat-icon">
+            <i class="fas fa-dna"></i>
+          </div>
+          <div class="stat-label">Chromosomes</div><hr>
+          <div class="stat-value" id="statChromosomes">23</div>
+          
+        </div>
+      </div>
+      <div class="col-lg-3 col-md-6">
+        <div class="modern-stat-card success-gradient">
+          <div class="stat-icon">
+            <i class="fas fa-microscope"></i>
+          </div>
+          <div class="stat-label">Traits Analyzed</div><hr>
+          <div class="stat-value" id="statTraits">0</div>
+          
+        </div>
+      </div>
+      <div class="col-lg-3 col-md-6">
+        <div class="modern-stat-card info-gradient">
+          <div class="stat-icon">
+            <i class="fas fa-flask"></i>
+          </div>
+          <div class="stat-label">Genes Mapped</div><hr>
+          <div class="stat-value">20,000+</div> 
+          
+        </div>
+      </div>
+    </div>
+
+    <!-- Chromosome Selector -->
+    <div class="glass-card mb-4">
+      <div class="d-flex align-items-center mb-4">
+        <div class="icon-wrapper">
+          <i class="fas fa-dna"></i>
+        </div>
+        <h5 class="mb-0 ms-3">Select a Chromosome</h5>
+      </div>
+      <div id="chromosomeButtons" class="chromosome-grid">
+        <button class="modern-chr-btn active" onclick="loadChromosome(1, this)">
+          <span class="chr-number">1</span>
+        </button>
+        <button class="modern-chr-btn" onclick="loadChromosome(2, this)">
+          <span class="chr-number">2</span>
+        </button>
+        <button class="modern-chr-btn" onclick="loadChromosome(3, this)">
+          <span class="chr-number">3</span>
+        </button>
+        <button class="modern-chr-btn" onclick="loadChromosome(7, this)">
+          <span class="chr-number">7</span>
+        </button>
+        <button class="modern-chr-btn" onclick="loadChromosome(11, this)">
+          <span class="chr-number">11</span>
+        </button>
+        <button class="modern-chr-btn" onclick="loadChromosome(15, this)">
+          <span class="chr-number">15</span>
+        </button>
+        <button class="modern-chr-btn" onclick="loadChromosome(19, this)">
+          <span class="chr-number">19</span>
+        </button>
+        <button class="modern-chr-btn" onclick="loadChromosome(21, this)">
+          <span class="chr-number">21</span>
+        </button>
+        <button class="modern-chr-btn" onclick="loadChromosome('X', this)">
+          <span class="chr-number">X</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Trait Visualization -->
+    <div class="glass-card">
+      <div class="d-flex align-items-center justify-content-between mb-4">
+        <div class="d-flex align-items-center">
+          <div class="icon-wrapper">
+            <i class="fas fa-chart-bar"></i>
+          </div>
+          <h5 class="mb-0 ms-3" id="chromosomeTitle">Chromosome 1 - Genetic Traits</h5>
+        </div>
+        <span class="badge-modern" id="traitCount">0 Traits</span>
+      </div>
+      <div id="traitsList"></div>
+    </div>
+  </div>
+</section>
+
 
     <!-- Risk Tool Section -->
     <section id="risk-tool" class="risk-tool section">

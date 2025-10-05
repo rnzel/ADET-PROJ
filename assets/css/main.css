@@ -19,24 +19,24 @@
 
 /* Global Colors - The following color variables are used throughout the website. Updating them here will change the color scheme of the entire website */
 :root { 
-  --background-color: #ffffff; /* Background color for the entire website, including individual sections */
-  --default-color: #444444; /* Default color used for the majority of the text content across the entire website */
-  --heading-color: #060B25; /* Color for headings, subheadings and title throughout the website */
-  --accent-color: #315599; /* Accent color that represents your brand on the website. It's used for buttons, links, and other elements that need to stand out */
+  --background-color: #060b25; /* Background color for the entire website, including individual sections */
+  --default-color: #BBBBCD; /* Default color used for the majority of the text content across the entire website */
+  --heading-color: #ffffff; /* Color for headings, subheadings and title throughout the website */
+  --accent-color: #524DD3; /* Accent color that represents your brand on the website. It's used for buttons, links, and other elements that need to stand out */
   --surface-color: #ffffff; /* The surface color is used as a background of boxed elements within sections, such as cards, icon boxes, or other elements that require a visual separation from the global background. */
   --contrast-color: #ffffff; /* Contrast color for text, ensuring readability against backgrounds of accent, heading, or default colors. */
 }
 
 /* Nav Menu Colors - The following color variables are used specifically for the navigation menu. They are separate from the global colors to allow for more customization options */
 :root {
-  --nav-color: #315599;  /* The default color of the main navmenu links */
-  --nav-hover-color:#315599; /* Applied to main navmenu links when they are hovered over or active */
+  --nav-color: #B3B1CE;  /* The default color of the main navmenu links */
+  --nav-hover-color:#ffffff; /* Applied to main navmenu links when they are hovered over or active */
   --nav-mobile-background-color: #ffffff; /* Used as the background color for mobile navigation menu */
 /* Color Presets - These classes override global colors when applied to any section or element, providing reuse of the sam color scheme. */
 
 .light-background {
-  --background-color: #f1f7fc;
-  --surface-color: #ffffff;
+  --background-color: #060b25;
+  --surface-color: #131428;
 }
 
 .dark-background {
@@ -68,11 +68,11 @@ a {
 }
 
 a:hover {
-  color: color-mix(in srgb, var(--accent-color), transparent 25%);
+  color: color-mix(in srgb, var(--default-color), transparent 25%);
   text-decoration: none;
 }
 
-h1
+h1,
 h2,
 h3,
 h4,
@@ -80,20 +80,6 @@ h5,
 h6 {
   color: var(--heading-color);
   font-family: var(--heading-font);
-}
-
-.btn {
-  color: white;
-  border-radius: 50px;
-  padding: 15px;
-  padding-left: 30px;
-  padding-right: 30px;
-  margin-top: 50px;
-  font-weight: 600;
-}
-
-.submit {
-  background: #315599;
 }
 
 /* Pulsating Play Button
@@ -1025,7 +1011,11 @@ section,
 /*--------------------------------------------------------------
 # About Section
 --------------------------------------------------------------*/
-
+.about {
+  margin-top: 25px;
+  margin-bottom: 0;
+  padding-bottom: 0;
+}
 .about .content h3 {
   font-size: 2rem;
   font-weight: 700;
@@ -1038,11 +1028,11 @@ section,
   color: var(--contrast-color);
   background-color: var(--accent-color);
   box-shadow: 0px 2px 25px rgba(0, 0, 0, 0.1);
-  width: 54px;
-  height: 54px;
+  width: 75px;
+  height: 75px;
   font-size: 24px;
   border-radius: 50px;
-  border: 2px solid var(--background-color);
+  border: 10px solid #29265D;
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -1052,7 +1042,7 @@ section,
 
 .stats .stats-item {
   background-color: var(--surface-color);
-  margin-top: -27px;
+  margin-top: -50px;
   padding: 30px 30px 25px 30px;
   width: 100%;
   position: relative;
@@ -1060,6 +1050,7 @@ section,
   box-shadow: 0px 2px 35px rgba(0, 0, 0, 0.1);
   border-radius: 4px;
   z-index: 0;
+  transition: all 0.3s ease-in-out;
 }
 
 .stats .stats-item span {
@@ -1071,10 +1062,15 @@ section,
 }
 
 .stats .stats-item p {
-  padding: 0;
+  padding: 5px;
   margin: 0;
   font-family: var(--heading-font);
-  font-size: 16px;
+  font-size: 13px;
+  line-height: 2;
+}
+
+.stats-item:hover {
+  transform: translateY(-10px);
 }
 
 /*--------------------------------------------------------------
@@ -1697,7 +1693,338 @@ section,
 /*--------------------------------------------------------------
 # Starter Section Section
 --------------------------------------------------------------*/
-.starter-section {
-  /* Add your styles here */
+.btn {
+  color: var(--accent-color);
+  border:2px solid;
+  border-radius: 50px;
+  padding: 15px;
+  padding-left: 30px;
+  padding-right: 30px;
+  margin-top: 50px;
+  font-weight: 600;
 }
+
+.btn:hover {
+  border: 2px solid var(--accent-color);
+  background-color: var(--accent-color);
+  color: white;
+}
+
+/* Modern Genome Explorer Styles */
+.glass-card {
+  background: #131428;
+  backdrop-filter: blur(20px);
+  border-radius: 24px;
+  padding: 60px;
+  box-shadow: 0 8px 32px rgba(49, 85, 153, 0.08);
+  margin-bottom: 20px;
+}
+
+.modern-stat-card {
+  background-color: #131428;
+  position: relative;
+  padding: 35px 30px;
+  border-radius: 20px;
+  color: #131428;
+  overflow: hidden;
+  transition: all 0.4s;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
+}
+
+.modern-stat-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.18);
+}
+
+
+.stat-icon { 
+  font-size: 2.5rem; 
+  margin-bottom: 15px; 
+  opacity: 0.9; 
+}
+
+.modern-stat-card i {
+  color: var(--contrast-color);
+  background-color: var(--accent-color);
+  box-shadow: 0px 2px 25px rgba(0, 0, 0, 0.1);
+  width: 75px;
+  height: 75px;
+  font-size: 24px;
+  border-radius: 20px;
+  border: 10px solid #29265D;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  z-index: 1;
+}
+
+
+.stat-value { 
+  font-size: 2.5rem; 
+  font-weight: 800; 
+  margin-bottom: 8px; 
+  color: #ffffff; 
+}
+
+.stat-label { 
+  font-size: 0.95rem; 
+  opacity: 0.95; 
+  font-weight: 500; 
+  color: #BBBBCD; }
+
+.icon-wrapper {
+  width: 50px;
+  height: 50px;
+  background: linear-gradient(135deg, #315599, #254477);
+  border-radius: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 1.4rem;
+  box-shadow: 0 4px 15px rgba(49, 85, 153, 0.25);
+}
+
+.chromosome-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
+  gap: 15px;
+}
+
+.modern-chr-btn {
+  position: relative;
+  padding: 20px;
+  background: white;
+  border: 2px solid #e5e7eb;
+  border-radius: 16px;
+  cursor: pointer;
+  transition: all 0.3s;
+  overflow: hidden;
+}
+
+.modern-chr-btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, #315599, #254477);
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.modern-chr-btn .chr-number {
+  position: relative;
+  font-size: .9rem;
+  font-weight: 700;
+  color: #374151;
+  transition: color 0.3s;
+}
+
+.modern-chr-btn:hover {
+  border-color: #315599;
+  transform: translateY(-4px);
+  box-shadow: 0 8px 20px rgba(49, 85, 153, 0.15);
+}
+
+.modern-chr-btn.active::before { opacity: 1; }
+.modern-chr-btn.active .chr-number { color: white; }
+
+.badge-modern {
+  padding: 8px 20px;
+  background: linear-gradient(135deg, #f0f4ff, #e0e7ff);
+  color: #315599;
+  border-radius: 20px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  border: 1px solid rgba(49, 85, 153, 0.2);
+}
+
+.modern-trait-card {
+  background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%);
+  border-radius: 16px;
+  padding: 25px;
+  margin-bottom: 20px;
+  border: 1px solid #e5e7eb;
+  border-left: 4px solid #315599;
+  transition: all 0.4s;
+}
+
+.modern-trait-card:hover {
+  transform: translateX(8px);
+  box-shadow: 0 12px 35px rgba(49, 85, 153, 0.12);
+  border-color: #315599;
+}
+
+.trait-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: start;
+  margin-bottom: 20px;
+}
+
+.trait-info h6 {
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: #111827;
+  margin-bottom: 6px;
+}
+
+.trait-info p {
+  font-size: 0.9rem;
+  color: #6b7280;
+  margin-bottom: 0;
+}
+
+.trait-percentage-badge {
+  padding: 8px 16px;
+  background: linear-gradient(135deg, #315599, #254477);
+  color: white;
+  border-radius: 12px;
+  font-size: 1.1rem;
+  font-weight: 700;
+  box-shadow: 0 4px 12px rgba(49, 85, 153, 0.25);
+}
+
+.modern-progress {
+  height: 14px;
+  background: #e5e7eb;
+  border-radius: 10px;
+  overflow: hidden;
+  margin-bottom: 15px;
+}
+
+.modern-progress-bar {
+  height: 100%;
+  background: linear-gradient(90deg, #315599, #254477);
+  border-radius: 10px;
+  transition: width 1.2s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 0 15px rgba(49, 85, 153, 0.4);
+}
+
+.gene-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 14px;
+  background: #f0f4ff;
+  color: #315599;
+  border-radius: 20px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  border: 1px solid #d1d9f5;
+}
+
+.loading-skeleton {
+  background: linear-gradient(90deg, #f3f4f6 25%, #e5e7eb 50%, #f3f4f6 75%);
+  background-size: 200% 100%;
+  animation: loading 1.8s infinite;
+  border-radius: 16px;
+  height: 120px;
+  margin: 15px 0;
+}
+
+@keyframes loading {
+  0% { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+
+/* Risk Assessment Styles */
+.risk-result {
+  background: #f8fafc;
+  border-radius: 24px;
+  padding: 40px;
+  margin-top: 30px;
+  box-shadow: 0 8px 32px rgba(49, 85, 153, 0.08);
+  border: 1px solid rgba(49, 85, 153, 0.1);
+}
+
+.risk-categories {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 20px;
+  margin: 30px 0;
+}
+
+.risk-category-card {
+  background: white;
+  border-radius: 16px;
+  padding: 25px;
+  border-left: 4px solid;
+  text-align: center;
+  transition: all 0.3s;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+}
+
+.risk-category-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+.risk-category-card.low { border-left-color: #10b981; background: linear-gradient(135deg, rgba(16, 185, 129, 0.05) 0%, rgba(16, 185, 129, 0.02) 100%); }
+.risk-category-card.medium { border-left-color: #f59e0b; background: linear-gradient(135deg, rgba(245, 158, 11, 0.05) 0%, rgba(245, 158, 11, 0.02) 100%); }
+.risk-category-card.high { border-left-color: #ef4444; background: linear-gradient(135deg, rgba(239, 68, 68, 0.05) 0%, rgba(239, 68, 68, 0.02) 100%); }
+
+.risk-category-card h5 {
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-weight: 700;
+  color: #64748b;
+  margin-bottom: 12px;
+}
+
+.risk-value {
+  font-size: 36px;
+  font-weight: 800;
+  margin: 10px 0;
+}
+
+.risk-value.risk-low { color: #10b981; }
+.risk-value.risk-medium { color: #f59e0b; }
+.risk-value.risk-high { color: #ef4444; }
+
+.genetic-markers {
+  background: white;
+  border-radius: 16px;
+  padding: 30px;
+}
+
+.marker-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px;
+  margin: 10px 0;
+  background: #f8fafc;
+  border-radius: 12px;
+  transition: all 0.3s;
+}
+
+.marker-item:hover {
+  transform: translateX(5px);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+}
+
+.marker-badge {
+  padding: 6px 16px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.marker-badge.positive { background: rgba(16, 185, 129, 0.15); color: #059669; }
+.marker-badge.negative { background: rgba(239, 68, 68, 0.15); color: #dc2626; }
+.marker-badge.neutral { background: rgba(245, 158, 11, 0.15); color: #d97706; }
+
+@media (max-width: 768px) {
+  .glass-card { padding: 25px 20px; }
+  .chromosome-grid { grid-template-columns: repeat(auto-fill, minmax(60px, 1fr)); gap: 10px; }
+  .modern-chr-btn { padding: 15px; }
+  .stat-value { font-size: 2.2rem; }
+}
+
 }

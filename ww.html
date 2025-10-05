@@ -1,177 +1,254 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Disease Risk Assessment Tool</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      background: #f9fafb;
-      margin: 0;
-      padding: 20px;
-    }
-    .container {
-      max-width: 700px;
-      margin: auto;
-      background: #fff;
-      padding: 20px;
-      border-radius: 12px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-    }
-    h1 {
-      text-align: center;
-      color: #333;
-    }
-    label {
-      display: block;
-      margin-top: 12px;
-      font-weight: bold;
-    }
-    input, select, textarea {
-      width: 100%;
-      padding: 8px;
-      margin-top: 4px;
-      border: 1px solid #ccc;
-      border-radius: 6px;
-    }
-    .risk-results {
-      margin-top: 20px;
-      padding: 15px;
-      background: #f3f4f6;
-      border-radius: 8px;
-    }
-    .progress-bar {
-      background: #e5e7eb;
-      border-radius: 6px;
-      overflow: hidden;
-      height: 16px;
-      margin: 6px 0;
-    }
-    .progress {
-      height: 100%;
-      text-align: right;
-      color: #fff;
-      font-size: 12px;
-      line-height: 16px;
-      padding-right: 4px;
-    }
-    .low { background: #10b981; }
-    .moderate { background: #f59e0b; }
-    .high { background: #ef4444; }
-    .disclaimer {
-      margin-top: 20px;
-      font-size: 0.9em;
-      color: #666;
-      text-align: center;
-    }
-    button {
-      margin-top: 16px;
-      padding: 10px 15px;
-      background: #4f46e5;
-      color: white;
-      border: none;
-      border-radius: 8px;
-      cursor: pointer;
-    }
-    button:hover {
-      background: #4338ca;
-    }
-  </style>
-</head>
-<body>
+<!-- Research Case Study Gallery (paste into page) -->
+<!-- Chart.js CDN -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<style>
+  /* Gallery styles */
+  .case-gallery { padding: 40px 0; }
+  .case-card { cursor: pointer; border-radius: 12px; overflow: hidden; box-shadow: 0 6px 18px rgba(15,23,42,0.06); }
+  .case-card img { width:100%; height:180px; object-fit:cover; display:block;}
+  .case-card .case-body { padding:12px; background:#fff; }
+  .case-meta { font-size:0.9rem; color:#6b7280; }
+  .case-title { font-weight:600; margin-bottom:6px; }
+  /* Modal layout */
+  .case-modal .modal-dialog { max-width: 1000px; }
+  .case-modal .modal-body { display:flex; gap:20px; flex-wrap:wrap; }
+  .case-modal .left { flex: 1 1 360px; }
+  .case-modal .right { flex: 1 1 520px; }
+  .chart-area { background:#fff; border-radius:8px; padding:12px; box-shadow:0 6px 18px rgba(15,23,42,0.04); }
+  .chart-controls { display:flex; gap:8px; margin-bottom:8px; flex-wrap:wrap;}
+  .download-btn { margin-left: auto; }
+  @media (max-width:900px){
+    .case-modal .modal-body { flex-direction:column; }
+  }
+</style>
+
+<section id="case-studies" class="case-gallery section">
   <div class="container">
-    <h1>Disease Risk Assessment Tool</h1>
-    <p style="text-align:center; color:#555;">
-      Comprehensive genetic risk analysis (mock data for educational use only)
-    </p>
-
-    <form id="riskForm">
-      <label>Your Name</label>
-      <input type="text" id="name" required>
-
-      <label>Your Age</label>
-      <input type="number" id="age" required>
-
-      <label>Select Gender</label>
-      <select id="gender" required>
-        <option value="">-- Select --</option>
-        <option>Male</option>
-        <option>Female</option>
-        <option>Other</option>
-      </select>
-
-      <label>Family History (check all that apply)</label>
-      <input type="checkbox" id="fh_diabetes"> Diabetes<br>
-      <input type="checkbox" id="fh_heart"> Heart Disease<br>
-      <input type="checkbox" id="fh_cancer"> Cancer<br>
-
-      <label>Lifestyle Factor</label>
-      <textarea id="lifestyle" placeholder="e.g., Exercise 3x per week, balanced diet..."></textarea>
-
-      <button type="button" onclick="showRisk()">Assess Risk</button>
-    </form>
-
-    <div id="results" class="risk-results" style="display:none;">
-      <h3>Risk Results for <span id="userName"></span></h3>
-      <div id="diabetesResult"></div>
-      <div id="heartResult"></div>
-      <div id="cancerResult"></div>
+    <div class="section-title text-center mb-4">
+      <h2>Research Case Study Gallery</h2>
+      <p>Selected case studies with visualized sample data — click a card to explore charts and details.</p>
     </div>
 
-    <p class="disclaimer">
-      ⚠ This is a mock educational tool and does not provide medical advice.
-    </p>
-  </div>
-
-  <script>
-    function calculateRisk(age, hasHistory) {
-      let base = Math.floor(Math.random() * 50) + 20; // 20–70 random base risk
-      if (age > 40) base += 15;
-      if (hasHistory) base += 20;
-      return Math.min(base, 100); // cap at 100
-    }
-
-    function getRiskLevel(score) {
-      if (score < 40) return { level: "Low", class: "low" };
-      if (score < 70) return { level: "Moderate", class: "moderate" };
-      return { level: "High", class: "high" };
-    }
-
-    function renderProgressBar(condition, score) {
-      const risk = getRiskLevel(score);
-      return `
-        <p>${condition}</p>
-        <div class="progress-bar">
-          <div class="progress ${risk.class}" style="width:${score}%;">
-            ${risk.level} (${score}%)
+    <div class="row g-3">
+      <!-- Case cards: add/remove or change data-id -->
+      <div class="col-md-4">
+        <div class="case-card" data-case="case1" onclick="openCase('case1')">
+          <img src="assets/img/gallery/gallery-1.jpg" alt="Case study 1">
+          <div class="case-body">
+            <div class="case-title">Case 1 — Rare Variant Investigation</div>
+            <div class="case-meta">Chromosome 1 · Candidate gene: OCA2 · Samples: 120</div>
           </div>
         </div>
-      `;
-    }
+      </div>
 
-    function showRisk() {
-      const name = document.getElementById("name").value;
-      const age = parseInt(document.getElementById("age").value);
+      <div class="col-md-4">
+        <div class="case-card" data-case="case2" onclick="openCase('case2')">
+          <img src="assets/img/gallery/gallery-2.jpg" alt="Case study 2">
+          <div class="case-body">
+            <div class="case-title">Case 2 — Population Trait Distribution</div>
+            <div class="case-meta">Chromosome 7 · Trait: Athletic performance · Samples: 300</div>
+          </div>
+        </div>
+      </div>
 
-      // Family history
-      const fh_diabetes = document.getElementById("fh_diabetes").checked;
-      const fh_heart = document.getElementById("fh_heart").checked;
-      const fh_cancer = document.getElementById("fh_cancer").checked;
+      <div class="col-md-4">
+        <div class="case-card" data-case="case3" onclick="openCase('case3')">
+          <img src="assets/img/gallery/gallery-3.jpg" alt="Case study 3">
+          <div class="case-body">
+            <div class="case-title">Case 3 — Pharmacogenomics</div>
+            <div class="case-meta">Chromosome 19 · Gene: CYP2C9 · Samples: 85</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
-      // Calculate scores
-      const diabetesScore = calculateRisk(age, fh_diabetes);
-      const heartScore = calculateRisk(age, fh_heart);
-      const cancerScore = calculateRisk(age, fh_cancer);
+<!-- Modal -->
+<div class="modal fade case-modal" id="caseModal" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="caseModalTitle">Case Study</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <div class="left">
+          <img id="caseModalImage" src="" alt="" style="width:100%; border-radius:8px; object-fit:cover; max-height:360px;">
+          <div style="margin-top:12px;">
+            <p id="caseModalSummary" style="color:#374151"></p>
+            <div class="case-quick-meta" style="font-size:0.9rem; color:#6b7280;">
+              <div><strong>Chromosome:</strong> <span id="caseChromosome"></span></div>
+              <div><strong>Genes:</strong> <span id="caseGenes"></span></div>
+              <div><strong>Samples:</strong> <span id="caseSamples"></span></div>
+            </div>
+          </div>
+        </div>
 
-      // Display results
-      document.getElementById("userName").innerText = name;
-      document.getElementById("diabetesResult").innerHTML = renderProgressBar("Diabetes", diabetesScore);
-      document.getElementById("heartResult").innerHTML = renderProgressBar("Heart Disease", heartScore);
-      document.getElementById("cancerResult").innerHTML = renderProgressBar("Cancer", cancerScore);
+        <div class="right">
+          <div class="chart-area">
+            <div class="d-flex align-items-center chart-controls">
+              <div>
+                <button class="btn btn-sm btn-outline-primary" onclick="setChartType('bar')">Variant Frequency (bar)</button>
+                <button class="btn btn-sm btn-outline-secondary" onclick="setChartType('line')">Trait Trend (line)</button>
+                <button class="btn btn-sm btn-outline-success" onclick="setChartType('pie')">Trait Breakdown (pie)</button>
+              </div>
+              <button class="btn btn-sm btn-outline-dark download-btn" id="downloadCsvBtn" onclick="downloadCaseCSV()">Download CSV</button>
+            </div>
 
-      document.getElementById("results").style.display = "block";
-    }
-  </script>
-</body>
-</html>
+            <div style="height:300px;">
+              <canvas id="caseChart"></canvas>
+            </div>
+            <div style="margin-top:12px; color:#6b7280; font-size:0.9rem;">
+              <strong>Notes:</strong> <span id="caseNotes">Sample data for demonstration only.</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <small class="text-muted">This gallery uses mock data and is for educational/demo purposes only.</small>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+/* ========== Mock case data ========== */
+const caseData = {
+  case1: {
+    title: 'Rare Variant Investigation — OCA2 locus',
+    image: 'assets/img/gallery/gallery-1.jpg',
+    summary: 'Investigating a rare variant near OCA2 suspected to affect pigmentation. Includes genotyping across 120 samples and allele frequency analysis.',
+    chromosome: '1',
+    genes: 'OCA2, HERC2',
+    samples: 120,
+    notes: 'Variant annotation used mock consequence predictions.',
+    // datasets for charts:
+    variantFrequency: { labels: ['Ref', 'Alt (rs12345)', 'Alt2 (rs6789)'], values: [80, 30, 10] },
+    traitTrend: { labels: ['T1','T2','T3','T4','T5'], values: [0.12,0.15,0.13,0.17,0.14] }, // example allele freq over cohorts
+    traitBreakdown: { labels: ['Brown/Hazel','Blue','Green'], values: [60,25,15] }
+  },
+  case2: {
+    title: 'Population Trait Distribution — ACTN3 study',
+    image: 'assets/img/gallery/gallery-2.jpg',
+    summary: 'Population-scale analysis of ACTN3 variants and correlation with endurance performance across 300 samples.',
+    chromosome: '7',
+    genes: 'ACTN3',
+    samples: 300,
+    notes: 'Trait score computed from a mock polygenic model.',
+    variantFrequency: { labels: ['RR','RX','XX'], values: [160,100,40] },
+    traitTrend: { labels: ['2018','2019','2020','2021','2022'], values: [0.32,0.35,0.33,0.36,0.34] },
+    traitBreakdown: { labels: ['Low','Moderate','High'], values: [40,140,120] }
+  },
+  case3: {
+    title: 'Pharmacogenomics — CYP2C9 variants',
+    image: 'assets/img/gallery/gallery-3.jpg',
+    summary: 'Assessment of CYP2C9 variant distribution and predicted metabolizer phenotype in 85 clinical samples.',
+    chromosome: '19',
+    genes: 'CYP2C9',
+    samples: 85,
+    notes: 'Phenotype predictions are illustrative.',
+    variantFrequency: { labels: ['*1','*2','*3'], values: [55,20,10] },
+    traitTrend: { labels: ['Cohort A','Cohort B','Cohort C'], values: [0.65,0.60,0.68] },
+    traitBreakdown: { labels: ['Normal','Intermediate','Poor'], values: [50,25,10] }
+  }
+};
+
+/* ========== Chart handling ========== */
+let currentCase = null;
+let currentChartType = 'bar';
+let chartInstance = null;
+
+function openCase(caseId){
+  const c = caseData[caseId];
+  if(!c) return;
+  currentCase = c;
+
+  // fill modal text and image
+  document.getElementById('caseModalTitle').textContent = c.title;
+  document.getElementById('caseModalImage').src = c.image;
+  document.getElementById('caseModalSummary').textContent = c.summary;
+  document.getElementById('caseChromosome').textContent = c.chromosome;
+  document.getElementById('caseGenes').textContent = c.genes;
+  document.getElementById('caseSamples').textContent = c.samples;
+  document.getElementById('caseNotes').textContent = c.notes;
+
+  // default chart type
+  setChartType('bar');
+
+  // show Bootstrap modal
+  const modal = new bootstrap.Modal(document.getElementById('caseModal'));
+  modal.show();
+}
+
+function setChartType(type){
+  currentChartType = type;
+  const ctx = document.getElementById('caseChart').getContext('2d');
+
+  // clear previous chart
+  if(chartInstance) { chartInstance.destroy(); chartInstance = null; }
+
+  // choose dataset from currentCase
+  let labels = [], values = [], config = {};
+  if(type === 'bar'){
+    labels = currentCase.variantFrequency.labels;
+    values = currentCase.variantFrequency.values;
+    config = {
+      type: 'bar',
+      data: { labels, datasets: [{ label: 'Variant count', data: values, backgroundColor: '#4f46e5' }] },
+      options: { responsive:true, plugins:{legend:{display:false}}, scales:{y:{beginAtZero:true}} }
+    };
+  } else if(type === 'line'){
+    labels = currentCase.traitTrend.labels;
+    values = currentCase.traitTrend.values;
+    config = {
+      type: 'line',
+      data: { labels, datasets: [{ label: 'Trait trend', data: values, fill:false, borderColor:'#059669', tension:0.3 }] },
+      options: { responsive:true, plugins:{legend:{display:false}}, scales:{y:{beginAtZero:true}} }
+    };
+  } else if(type === 'pie'){
+    labels = currentCase.traitBreakdown.labels;
+    values = currentCase.traitBreakdown.values;
+    config = {
+      type: 'pie',
+      data: { labels, datasets: [{ label:'Breakdown', data: values, backgroundColor:['#ef4444','#f59e0b','#3b82f6'] }] },
+      options: { responsive:true, plugins:{legend:{position:'bottom'}} }
+    };
+  }
+
+  chartInstance = new Chart(ctx, config);
+}
+
+/* ========== CSV download helper ========== */
+function downloadCaseCSV(){
+  if(!currentCase) return;
+  // build a CSV combining datasets (simple format)
+  let csv = 'label,bar_value,line_value,pie_value\n';
+  // choose longest labels set to iterate
+  const labels = Array.from(new Set([
+    ...(currentCase.variantFrequency.labels || []),
+    ...(currentCase.traitTrend.labels || []),
+    ...(currentCase.traitBreakdown.labels || [])
+  ]));
+  labels.forEach((label, i) => {
+    const barIdx = currentCase.variantFrequency.labels.indexOf(label);
+    const lineIdx = currentCase.traitTrend.labels.indexOf(label);
+    const pieIdx = currentCase.traitBreakdown.labels.indexOf(label);
+    const barVal = barIdx >= 0 ? currentCase.variantFrequency.values[barIdx] : '';
+    const lineVal = lineIdx >= 0 ? currentCase.traitTrend.values[lineIdx] : '';
+    const pieVal = pieIdx >= 0 ? currentCase.traitBreakdown.values[pieIdx] : '';
+    csv += `${label},${barVal},${lineVal},${pieVal}\n`;
+  });
+
+  const blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = (currentCase.title || 'case') .replace(/\s+/g,'_').toLowerCase() + '.csv';
+  document.body.appendChild(a);
+  a.click();
+  document.body.removeChild(a);
+  URL.revokeObjectURL(url);
+}
+</script>
