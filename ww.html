@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Disease Risk Assessment Tool</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f9fafb;
+      margin: 0;
+      padding: 20px;
+    }
+    .container {
+      max-width: 700px;
+      margin: auto;
+      background: #fff;
+      padding: 20px;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+    h1 {
+      text-align: center;
+      color: #333;
+    }
+    label {
+      display: block;
+      margin-top: 12px;
+      font-weight: bold;
+    }
+    input, select, textarea {
+      width: 100%;
+      padding: 8px;
+      margin-top: 4px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+    }
+    .risk-results {
+      margin-top: 20px;
+      padding: 15px;
+      background: #f3f4f6;
+      border-radius: 8px;
+    }
+    .progress-bar {
+      background: #e5e7eb;
+      border-radius: 6px;
+      overflow: hidden;
+      height: 16px;
+      margin: 6px 0;
+    }
+    .progress {
+      height: 100%;
+      text-align: right;
+      color: #fff;
+      font-size: 12px;
+      line-height: 16px;
+      padding-right: 4px;
+    }
+    .low { background: #10b981; }
+    .moderate { background: #f59e0b; }
+    .high { background: #ef4444; }
+    .disclaimer {
+      margin-top: 20px;
+      font-size: 0.9em;
+      color: #666;
+      text-align: center;
+    }
+    button {
+      margin-top: 16px;
+      padding: 10px 15px;
+      background: #4f46e5;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+    button:hover {
+      background: #4338ca;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Disease Risk Assessment Tool</h1>
+    <p style="text-align:center; color:#555;">
+      Comprehensive genetic risk analysis (mock data for educational use only)
+    </p>
+
+    <form id="riskForm">
+      <label>Your Name</label>
+      <input type="text" id="name" required>
+
+      <label>Your Age</label>
+      <input type="number" id="age" required>
+
+      <label>Select Gender</label>
+      <select id="gender" required>
+        <option value="">-- Select --</option>
+        <option>Male</option>
+        <option>Female</option>
+        <option>Other</option>
+      </select>
+
+      <label>Family History (check all that apply)</label>
+      <input type="checkbox" id="fh_diabetes"> Diabetes<br>
+      <input type="checkbox" id="fh_heart"> Heart Disease<br>
+      <input type="checkbox" id="fh_cancer"> Cancer<br>
+
+      <label>Lifestyle Factor</label>
+      <textarea id="lifestyle" placeholder="e.g., Exercise 3x per week, balanced diet..."></textarea>
+
+      <button type="button" onclick="showRisk()">Assess Risk</button>
+    </form>
+
+    <div id="results" class="risk-results" style="display:none;">
+      <h3>Risk Results for <span id="userName"></span></h3>
+      <div id="diabetesResult"></div>
+      <div id="heartResult"></div>
+      <div id="cancerResult"></div>
+    </div>
+
+    <p class="disclaimer">
+      ⚠ This is a mock educational tool and does not provide medical advice.
+    </p>
+  </div>
+
+  <script>
+    function calculateRisk(age, hasHistory) {
+      let base = Math.floor(Math.random() * 50) + 20; // 20–70 random base risk
+      if (age > 40) base += 15;
+      if (hasHistory) base += 20;
+      return Math.min(base, 100); // cap at 100
+    }
+
+    function getRiskLevel(score) {
+      if (score < 40) return { level: "Low", class: "low" };
+      if (score < 70) return { level: "Moderate", class: "moderate" };
+      return { level: "High", class: "high" };
+    }
+
+    function renderProgressBar(condition, score) {
+      const risk = getRiskLevel(score);
+      return `
+        <p>${condition}</p>
+        <div class="progress-bar">
+          <div class="progress ${risk.class}" style="width:${score}%;">
+            ${risk.level} (${score}%)
+          </div>
+        </div>
+      `;
+    }
+
+    function showRisk() {
+      const name = document.getElementById("name").value;
+      const age = parseInt(document.getElementById("age").value);
+
+      // Family history
+      const fh_diabetes = document.getElementById("fh_diabetes").checked;
+      const fh_heart = document.getElementById("fh_heart").checked;
+      const fh_cancer = document.getElementById("fh_cancer").checked;
+
+      // Calculate scores
+      const diabetesScore = calculateRisk(age, fh_diabetes);
+      const heartScore = calculateRisk(age, fh_heart);
+      const cancerScore = calculateRisk(age, fh_cancer);
+
+      // Display results
+      document.getElementById("userName").innerText = name;
+      document.getElementById("diabetesResult").innerHTML = renderProgressBar("Diabetes", diabetesScore);
+      document.getElementById("heartResult").innerHTML = renderProgressBar("Heart Disease", heartScore);
+      document.getElementById("cancerResult").innerHTML = renderProgressBar("Cancer", cancerScore);
+
+      document.getElementById("results").style.display = "block";
+    }
+  </script>
+</body>
+</html>

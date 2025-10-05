@@ -72,17 +72,11 @@ a:hover {
   text-decoration: none;
 }
 
-h1,
-
+h1
 h2,
-h3
+h3,
 h4,
-h5 {
-  {
-  padding: 50px;
-}
-
-}
+h5,
 h6 {
   color: var(--heading-color);
   font-family: var(--heading-font);
@@ -96,6 +90,10 @@ h6 {
   padding-right: 30px;
   margin-top: 50px;
   font-weight: 600;
+}
+
+.submit {
+  background: #315599;
 }
 
 /* Pulsating Play Button
@@ -1701,4 +1699,5 @@ section,
 --------------------------------------------------------------*/
 .starter-section {
   /* Add your styles here */
+}
 }
