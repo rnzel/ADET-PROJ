@@ -489,3 +489,53 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 
+document.getElementById("riskForm").addEventListener("submit", function(event) {
+  event.preventDefault();
+
+  const values = [
+    document.getElementById("q1").value,
+    document.getElementById("q2").value,
+    document.getElementById("q3").value,
+    document.getElementById("q4").value,
+    document.getElementById("q5").value
+  ];
+
+  // Check for unanswered questions
+  if (values.includes("")) {
+    alert("Please answer all questions before submitting.");
+    return;
+  }
+
+  // Assign score based on risk level
+  let score = 0;
+  values.forEach(v => {
+    if (v === "high") score += 3;
+    else if (v === "moderate") score += 2;
+    else score += 1;
+  });
+
+  // Determine risk category
+  let resultText = "";
+  let riskClass = "";
+
+  if (score <= 7) {
+    resultText = "Low Risk — Your responses suggest a healthy genetic and lifestyle profile. Continue maintaining your good habits.";
+    riskClass = "low-risk";
+  } else if (score <= 11) {
+    resultText = "Moderate Risk — There are a few genetic or lifestyle factors that may increase your disease risk. Regular checkups are recommended.";
+    riskClass = "moderate-risk";
+  } else {
+    resultText = "High Risk — Your results indicate multiple risk factors that could increase your genetic disease likelihood. It’s best to seek professional genetic counseling.";
+    riskClass = "high-risk";
+  }
+
+  // Display results dynamically
+  const resultElement = document.getElementById("resultText");
+  resultElement.innerHTML = resultText;
+  resultElement.className = riskClass;
+
+  // Show recommendation link
+  document.getElementById("recommendation").style.display = "block";
+});
+
+
