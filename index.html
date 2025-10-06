@@ -84,6 +84,8 @@
           <p style="color:rgb(172, 172, 172); width: 40%; margin-top: 30px; font-size: 1.2rem;">Exploring DNA sequencing, personalized medicine, and CRISPR technology for a healthier future</p>
         </div><!-- End Welcome -->
 
+        <a class="btn btn-primary" href="#">Learn More</a>
+
         <a class="btn btn-outline-light" href="#genome-explorer" role="button">Explore Genomes</a>
        
 
@@ -183,59 +185,65 @@
       </div>
     </div>
 
+
+    <div class="glass-card mb-5">
+      <div class="row">
     <!-- Chromosome Selector -->
-    <div class="glass-card mb-4">
-      <div class="d-flex align-items-center mb-4">
-        <div class="icon-wrapper">
-          <i class="fas fa-dna"></i>
+        <div class="container mb-4 col-lg-4">
+          <div class="d-flex align-items-center mb-4">
+            <div class="icon-wrapper">
+              <i class="fas fa-dna"></i>
+            </div>
+            <h5 class="mb-0 ms-3">Select a Chromosome</h5>
+          </div>
+          <div id="chromosomeButtons" class="chromosome-grid">
+            <button class="modern-chr-btn active" onclick="loadChromosome(1, this)">
+              <span class="chr-number">1</span>
+            </button>
+            <button class="modern-chr-btn" onclick="loadChromosome(2, this)">
+              <span class="chr-number">2</span>
+            </button>
+            <button class="modern-chr-btn" onclick="loadChromosome(3, this)">
+              <span class="chr-number">3</span>
+            </button>
+            <button class="modern-chr-btn" onclick="loadChromosome(7, this)">
+              <span class="chr-number">7</span>
+            </button>
+            <button class="modern-chr-btn" onclick="loadChromosome(11, this)">
+              <span class="chr-number">11</span>
+            </button>
+            <button class="modern-chr-btn" onclick="loadChromosome(15, this)">
+              <span class="chr-number">15</span>
+            </button>
+            <button class="modern-chr-btn" onclick="loadChromosome(19, this)">
+              <span class="chr-number">19</span>
+            </button>
+            <button class="modern-chr-btn" onclick="loadChromosome(21, this)">
+              <span class="chr-number">21</span>
+            </button>
+            <button class="modern-chr-btn" onclick="loadChromosome('X', this)">
+              <span class="chr-number">X</span>
+            </button>
+          </div>
         </div>
-        <h5 class="mb-0 ms-3">Select a Chromosome</h5>
-      </div>
-      <div id="chromosomeButtons" class="chromosome-grid">
-        <button class="modern-chr-btn active" onclick="loadChromosome(1, this)">
-          <span class="chr-number">1</span>
-        </button>
-        <button class="modern-chr-btn" onclick="loadChromosome(2, this)">
-          <span class="chr-number">2</span>
-        </button>
-        <button class="modern-chr-btn" onclick="loadChromosome(3, this)">
-          <span class="chr-number">3</span>
-        </button>
-        <button class="modern-chr-btn" onclick="loadChromosome(7, this)">
-          <span class="chr-number">7</span>
-        </button>
-        <button class="modern-chr-btn" onclick="loadChromosome(11, this)">
-          <span class="chr-number">11</span>
-        </button>
-        <button class="modern-chr-btn" onclick="loadChromosome(15, this)">
-          <span class="chr-number">15</span>
-        </button>
-        <button class="modern-chr-btn" onclick="loadChromosome(19, this)">
-          <span class="chr-number">19</span>
-        </button>
-        <button class="modern-chr-btn" onclick="loadChromosome(21, this)">
-          <span class="chr-number">21</span>
-        </button>
-        <button class="modern-chr-btn" onclick="loadChromosome('X', this)">
-          <span class="chr-number">X</span>
-        </button>
+
+    <!-- Trait Visualization -->
+          <div class="container col-lg-6">
+            <div class="d-flex align-items-center justify-content-between mb-4">
+              <div class="d-flex align-items-center">
+                <div class="icon-wrapper">
+                  <i class="fas fa-chart-bar"></i>
+                </div>
+                <h5 class="mb-0 ms-3" id="chromosomeTitle">Chromosome 1 - Genetic Traits</h5>
+              </div>
+              <span class="badge-modern" id="traitCount">0 Traits</span>
+            </div>
+            <div id="traitsList"></div>
+          </div>
+        </div>
       </div>
     </div>
 
-    <!-- Trait Visualization -->
-    <div class="glass-card">
-      <div class="d-flex align-items-center justify-content-between mb-4">
-        <div class="d-flex align-items-center">
-          <div class="icon-wrapper">
-            <i class="fas fa-chart-bar"></i>
-          </div>
-          <h5 class="mb-0 ms-3" id="chromosomeTitle">Chromosome 1 - Genetic Traits</h5>
-        </div>
-        <span class="badge-modern" id="traitCount">0 Traits</span>
-      </div>
-      <div id="traitsList"></div>
-    </div>
-  </div>
 </section>
 
 
@@ -930,7 +938,7 @@
     </div>
 
     <div class="container copyright text-center mt-4">
-      <p>© <span>Copyright</span> <strong class="px-1 sitename">Medilab</strong> <span>All Rights Reserved</span></p>
+      <p>© <span>Copyright</span> <strong class="px-1 sitename">BioGenomics Hub</strong> <span>All Rights Reserved</span></p>
       <div class="credits">
         <!-- All the links in the footer should remain intact. -->
         <!-- You can delete the links only if you've purchased the pro version. -->
