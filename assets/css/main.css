@@ -1740,8 +1740,8 @@ hr {
 }
 
 .container {
-  padding-left: 10px;
-  padding-right: 10px;
+  padding-left: 15px;
+  padding-right: 15px;
 }
 
 .modern-stat-card {
@@ -1954,63 +1954,68 @@ hr {
 
 /* Form container */
 #riskForm {
-  background: #131428; 
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
+  background: #131428;
   color: #ffffff;
   border-radius: 10px;
-  padding: 20px;
+  padding: 10px;
   box-shadow: 0 3px 10px rgba(0, 0, 0, 0.35);
 }
 
 /* Each question row */
 #riskForm .question {
-  display: flex;
+  display: grid;
+  grid-template-columns: 1fr 1fr; /* label left, dropdown right */
   align-items: center;
-  justify-content: space-between;
-  padding: 20px;
-  margin-bottom: 12px; /* tighter spacing */
-  gap: 10px;
+  gap: 15px;
+  margin-bottom: 20px;
+}
+
+/* Responsive: single column on mobile */
+@media (max-width: 768px) {
+  #riskForm .question {
+    grid-template-columns: 1fr;
+  }
 }
 
 /* Label */
 #riskForm label {
-  flex: 1; /* take available space */
-  margin: 0;
   font-weight: 500;
   font-size: 14px;
+  margin: 0;
 }
 
 /* Dropdown */
 #riskForm .form-select {
-  flex: 0 0 220px; /* fixed width dropdown */
-  padding: 10px 20px;
+  width: 100%;
+  padding: 10px 15px;
   background: #0F1025;
   color: #6A7C8E;
   border: 2px solid #2D2E41;
   border-radius: 17px;
   font-size: 14px;
+  transition: all 0.3s ease;
 }
 
 #riskForm .form-select:valid {
-  background: #ffffff;   /* change to white */
-  color: #000000;        /* text color */
-  border: 2px solid #524DD3;
+  background: #ffffff;
+  color: #000000;
+  border: 2px solid #ffffff;
 }
 
 #riskForm .form-select:focus {
-  border: 2px solid #524DD3; 
-  outline: none;   
-  box-shadow: 0 0 5px rgba(82, 77, 211, 0.5); 
+  border: 2px solid #524DD3;
+  outline: none;
+  box-shadow: 0 0 5px rgba(82, 77, 211, 0.5);
 }
 
-/* Submit button area */
-#riskForm .text-center {
-  margin-top: 15px;
-}
-
+/* Submit button */
 #riskForm button {
   background: #3a3df2;
   border: none;
-  padding: 8px 20px;
+  padding: 10px 20px;
   border-radius: 6px;
   font-size: 14px;
   transition: all 0.3s ease;
@@ -2020,6 +2025,4 @@ hr {
   background: #1f21a7;
   transform: translateY(-1px);
 }
-
-
 }
