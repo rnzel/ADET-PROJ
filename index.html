@@ -62,7 +62,7 @@
           <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
         </nav>
 
-        <a class="cta-btn d-none d-sm-block" href="#risk-tool">Risk Assessment</a>
+        <a class="cta-btn d-none d-sm-block" href="#assessment">Risk Assessment</a>
 
       </div>
 
@@ -244,52 +244,100 @@
       </div>
     </div>
 
-</section>
+  </section>
 
-
-    <!-- Risk Tool Section -->
-    <section id="risk-tool" class="risk-tool section">
-
-      <!-- Section Title -->
-      <div class="container section-title" data-aos="fade-up">
-        <h2>Disease Risk Assessment Tool</h2>
-        <p>Comprehensive genetic risk analysis based on research data</p>
-      </div><!-- End Section Title -->
-
+    <!-- Disease Risk Assessment Tool Section -->
+    <section id="assessment" class="assessment section light-background">
       <div class="container" data-aos="fade-up" data-aos-delay="100">
 
-        <form action="forms" method="post" role="form" class="php-email-form">
-          <div class="row">
-            <div class="col-md-4 form-group mt-3 mt-md-0">
-              <input type="text" class="form-control" name="age" id="age" placeholder="Your Age" required="">
+        <!-- Section Title -->
+        <div class="section-title text-center mb-5">
+          <h2 class="fw-bold">Disease Risk Assessment Tool</h2>
+          <p>Answer the following genomic and lifestyle questions to estimate your potential disease risk.</p>
+        </div>
+
+        <section id="risk-assessment" class="py-5">
+          <div class="container">
+            <div class="row">
+              
+              <!-- Left Side: Questions -->
+              <div class="col-md-6">
+                <form id="riskForm" class="p-4 rounded shadow">
+                  
+                  <!-- Question 1 -->
+                  <div class="question">
+                    <label for="q1">1. Family history of genetic disorders?</label>
+                    <select class="form-select" id="q1" name="q1" required>
+                      <option value="">-- Select --</option>
+                      <option value="high">Yes, multiple relatives</option>
+                      <option value="moderate">Yes, one relative</option>
+                      <option value="low">No</option>
+                    </select>
+                  </div>
+
+                  <!-- Question 2 -->
+                  <div class="question">
+                    <label for="q2">2. Frequency of genetic or health screening?</label>
+                    <select class="form-select" id="q2" name="q2" required>
+                      <option value="">-- Select --</option>
+                      <option value="low">Regularly (yearly)</option>
+                      <option value="moderate">Sometimes</option>
+                      <option value="high">Never</option>
+                    </select>
+                  </div>
+
+                  <!-- Question 3 -->
+                  <div class="question">
+                    <label for="q3">3. What best describes your lifestyle?</label>
+                    <select class="form-select" id="q3" name="q3" required>
+                      <option value="">-- Select --</option>
+                      <option value="low">Healthy diet + exercise</option>
+                      <option value="moderate">Mixed habits</option>
+                      <option value="high">Unhealthy diet + sedentary</option>
+                    </select>
+                  </div>
+
+                  <!-- Question 4 -->
+                  <div class="question">
+                    <label for="q4">4. Exposure to environmental risks?</label>
+                    <select class="form-select" id="q4" name="q4" required>
+                      <option value="">-- Select --</option>
+                      <option value="high">Frequently</option>
+                      <option value="moderate">Occasionally</option>
+                      <option value="low">Rarely/Never</option>
+                    </select>
+                  </div>
+
+                  <!-- Question 5 -->
+                  <div class="question">
+                    <label for="q5">5. Do you know your genetic predispositions?</label>
+                    <select class="form-select" id="q5" name="q5" required>
+                      <option value="">-- Select --</option>
+                      <option value="low">Yes, managed</option>
+                      <option value="moderate">Yes, unmanaged</option>
+                      <option value="high">No</option>
+                    </select>
+                  </div>
+
+                  <!-- Submit -->
+                  <div class="text-center mt-4">
+                    <button type="submit" class="btn btn-primary px-4 rounded-5">Submit Assessment</button>
+                  </div>
+                </form>
+              </div>
+
+              <!-- Right Side: Results -->
+              <div class="col-md-6">
+                <div id="resultsBox" class="p-4 rounded shadow text-center">
+                  <h5 class="mb-3">Assessment Results</h5>
+                  <p id="resultText">⚡ No results yet. Submit the form to see your risk assessment.</p>
+                </div>
+              </div>
+
             </div>
-          <div class="row">
-            <div class="col-md-4 form-group mt-3">
-              <select name="gender" id="gender" class="form-select" required="">
-                <option value="">Select Gender</option>
-                <option value="Gender 1">Male</option>
-                <option value="Gender 2">Female</option>
-              </select>
-            </div>
-
           </div>
-          <div class="col-md-4 form-group mt-3">
-              <select name="lifestyle" id="lifestyle" class="form-select" required="">
-                <option value="">Lifestyle Factor</option>
-                <option value="lifestyle 1">Very Healthy</option>
-                <option value="lifestyle 2">Moderately Healthy</option>
-                <option value="lifestyle" >Need Improvement</option>
-              </select>
-            </div>
-          </div>
+        </section>
 
-            <div class="text-center"><button type="submit">Calculate Risk</button></div>
-          </div>
-        </form>
-
-      </div>
-
-    </section><!-- /Appointment Section -->
 
     <!-- Departments Section -->
     <section id="departments" class="departments section">
