@@ -251,7 +251,7 @@
       <div class="container" data-aos="fade-up" data-aos-delay="100">
 
         <!-- Section Title -->
-        <div class="section-title text-center mb-5">
+        <div class="section-title text-center">
           <h2 class="fw-bold">Disease Risk Assessment Tool</h2>
           <p>Answer the following genomic and lifestyle questions to estimate your potential disease risk.</p>
         </div>
@@ -341,9 +341,86 @@
 
             </div>
           </div>
-        </section>
+        </section> <hr>
 
-        
+      <!-- Research Case Study Gallery Section -->
+      <section id="case-studies" class="section light-background">
+        <div class="container" data-aos="fade-up" data-aos-delay="100">
+
+          <!-- Section Title -->
+          <div class="section-title text-center mb-5">
+            <h2 class="fw-bold text-white">Research Case Study Gallery</h2>
+            <p class="text-white-50">
+              Explore real-world bioinformatics and genomic research with interactive data insights.
+              Click on a case study to explore its findings.
+            </p>
+          </div>
+
+          <!-- Gallery Grid -->
+          <div class="row gy-4 justify-content-center" id="caseGallery">
+
+            <!-- Study 1 -->
+            <div class="col-lg-4 col-md-6">
+              <div class="case-card p-0 rounded shadow-sm overflow-hidden text-white text-center">
+                <img src="assets/img/DNA-lab.jpg" alt="Whole Genome Study" class="case-img">
+                <div class="case-overlay p-4">
+                  <h5 class="fw-bold mb-2">Whole-Genome Sequencing: Population Cohort A</h5>
+                  <p class="text-white-50">Population-scale WGS identifying rare variants linked to metabolic traits.</p>
+                  <button class="btn btn-outline-light btn-sm mt-2" onclick="openCaseModal(1)">
+                    View Data Insights
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <!-- Study 2 -->
+            <div class="col-lg-4 col-md-6">
+              <div class="case-card p-0 rounded shadow-sm overflow-hidden text-white text-center">
+                <img src="assets/img/research-scientists.jpeg" alt="CRISPR Study" class="case-img">
+                <div class="case-overlay p-4">
+                  <h5 class="fw-bold mb-2">CRISPR Knockout Screen in Cell Line X</h5>
+                  <p class="text-white-50">Identifying cell proliferation regulators via high-throughput CRISPR screening.</p>
+                  <button class="btn btn-outline-light btn-sm mt-2" onclick="openCaseModal(2)">
+                    View Data Insights
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <!-- Study 3 -->
+            <div class="col-lg-4 col-md-6">
+              <div class="case-card p-0 rounded shadow-sm overflow-hidden text-white text-center">
+                <img src="assets/img/genomics-microbiology-lab.png" alt="Pharmacogenomics Study" class="case-img">
+                <div class="case-overlay p-4">
+                  <h5 class="fw-bold mb-2">Pharmacogenomics: Drug Response Panel</h5>
+                  <p class="text-white-50">Panel-based profiling for optimized drug response in clinical trials.</p>
+                  <button class="btn btn-outline-light btn-sm mt-2" onclick="openCaseModal(3)">
+                    View Data Insights
+                  </button>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </section>
+
+      <!-- Modal for Data Insights -->
+      <!-- Modal -->
+      <div class="modal fade" id="caseModal" tabindex="-1">
+        <div class="modal-dialog modal-lg">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="caseTitle"></h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body text-center">
+              <p id="caseDescription"></p>
+              <canvas id="modalChart"></canvas>
+            </div>
+          </div>
+        </div>
+      </div>
 
 
     <!-- Departments Section -->
@@ -1018,6 +1095,8 @@
   <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
   <script src="assets/vendor/purecounter/purecounter_vanilla.js"></script>
   <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 
   <!-- Main JS File -->
   <script src="assets/js/main.js"></script>

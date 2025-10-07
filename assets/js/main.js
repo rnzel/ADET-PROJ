@@ -539,3 +539,69 @@ document.getElementById("riskForm").addEventListener("submit", function(event) {
 });
 
 
+let modalChartInstance = null;
+
+// Case data with unique chart types and data
+const caseData = {
+  1: { 
+    title: "Whole-Genome Sequencing: Population Cohort A", 
+    desc: "Insights on population-level genetic diversity. Data shows variation frequencies.", 
+    type: "bar",
+    data: { labels: ["Gene A", "Gene B", "Gene C"], values: [40, 35, 25] }
+  },
+  2: { 
+    title: "CRISPR Knockout Screen in Cell Line X", 
+    desc: "Gene knockout efficiency rates in the CRISPR screening process.", 
+    type: "line",
+    data: { labels: ["Trial 1", "Trial 2", "Trial 3"], values: [20, 50, 30] }
+  },
+  3: { 
+    title: "Pharmacogenomics: Drug Response Panel", 
+    desc: "Profiling genetic influence on drug metabolism among patients.", 
+    type: "doughnut",
+    data: { labels: ["Low Response", "Moderate", "High Response"], values: [15, 60, 25] }
+  }
+};
+
+function openCaseModal(caseId) {
+  const modalEl = document.getElementById("caseModal");
+  const modal = new bootstrap.Modal(modalEl);
+  const ctx = document.getElementById("modalChart").getContext("2d");
+  const study = caseData[caseId];
+
+  document.getElementById("caseTitle").innerText = study.title;
+  document.getElementById("caseDescription").innerText = study.desc;
+
+  modal.show();
+
+  modalEl.addEventListener('shown.bs.modal', function () {
+    if (modalChartInstance) modalChartInstance.destroy();
+
+    modalChartInstance = new Chart(ctx, {
+      type: study.type,
+      data: {
+        labels: study.data.labels,
+        datasets: [{
+          label: "Data Insight",
+          data: study.data.values,
+          backgroundColor: ["#3a3df2", "#00c896", "#ff4f4f"],
+          borderColor: "#bbb",
+          borderWidth: 1.5,
+          fill: true,
+          tension: 0.4
+        }]
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: {
+          legend: { labels: { color: "#fff" } }
+        },
+        scales: {
+          x: { ticks: { color: "#ddd" }, grid: { color: "#333" } },
+          y: { ticks: { color: "#ddd" }, grid: { color: "#333" }, beginAtZero: true }
+        }
+      }
+    });
+  }, { once: true });
+}
