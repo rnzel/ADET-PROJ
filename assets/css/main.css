@@ -2114,7 +2114,7 @@ hr {
   position: relative;
   overflow: hidden;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
-  height: 480px;
+  height: auto;
 }
 
 .case-card:hover {
@@ -2132,7 +2132,8 @@ hr {
 
 /* Overlay */
 .case-overlay {
-  background: rgba(19, 20, 40, 0.95);
+  height: 100%;
+  background: #0F1025;
 }
 
 /* Text colors */
@@ -2146,8 +2147,8 @@ hr {
 
 /* Button */
 .case-card button {
-  border-color: #ffffff;
-  color: #ffffff;
+  border-color: #524DD3;
+  color: #524DD3;
   transition: all 0.3s ease;
   margin-top: auto;
 }
