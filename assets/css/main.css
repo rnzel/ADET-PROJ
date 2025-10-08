@@ -1699,6 +1699,7 @@ hr {
 
 .btn {
   border-radius: 50px;
+  width: 200px;
   padding: 15px;
   padding-left: 30px;
   padding-right: 30px;
