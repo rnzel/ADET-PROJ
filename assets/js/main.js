@@ -605,3 +605,29 @@ function openCaseModal(caseId) {
     });
   }, { once: true });
 }
+
+
+// ================================
+// Light Mode
+// ================================
+
+  const themeToggle = document.getElementById('theme-toggle');
+  const body = document.body;
+
+  // Load theme from localStorage
+  if (localStorage.getItem('theme') === 'light') {
+    body.classList.add('light-mode');
+    themeToggle.innerHTML = '<i class="bi bi-sun"></i>';
+  }
+
+  themeToggle.addEventListener('click', () => {
+    body.classList.toggle('light-mode');
+
+    if (body.classList.contains('light-mode')) {
+      themeToggle.innerHTML = '<i class="bi bi-sun"></i>';
+      localStorage.setItem('theme', 'light');
+    } else {
+      themeToggle.innerHTML = '<i class="bi bi-moon"></i>';
+      localStorage.setItem('theme', 'dark');
+    }
+  });

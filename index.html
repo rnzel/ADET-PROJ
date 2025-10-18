@@ -59,10 +59,16 @@
             <li><a href="#case-studies">Research</a></li>
             <li><a href="#contact">Contact</a></li>
           </ul>
+          
           <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
-        </nav>
+        
+          </nav>
+          <a class="cta-btn" href="#assessment">Risk Assessment</a>
 
-        <a class="cta-btn d-none d-sm-block" href="#assessment">Risk Assessment</a>
+          <!-- Theme Toggle Button -->
+          <button id="theme-toggle" class="btn btn-outline-secondary ms-2">
+            <i class="bi bi-moon"></i>
+          </button>
 
       </div>
 
@@ -75,18 +81,17 @@
     <!-- Hero Section -->
     <section id="hero" class="hero section light-background">
 
-      <img src="assets/img/bg2.png" alt="" data-aos="fade-in">
-
       <div class="container position-relative">
 
         <div class="welcome position-relative" data-aos="fade-down" data-aos-delay="100">
-          <h2 style="width: 50%; color: beige;">Advancing Bioinformatics & Genomic Research</h2>
-          <p style="color:rgb(172, 172, 172); width: 40%; margin-top: 30px; font-size: 1.2rem;">Exploring DNA sequencing, personalized medicine, and CRISPR technology for a healthier future</p>
+          <h2 style="width: 50%; ">Advancing Bioinformatics & Genomic Research</h2>
+          <p style=" width: 40%; margin-top: 30px; font-size: 1.2rem;">Exploring DNA sequencing, personalized medicine, and CRISPR technology for a healthier future</p>
         </div><!-- End Welcome -->
+
 
         <a class="btn btn-primary" href="#about">Learn More</a>
 
-        <a class="btn btn-outline-light" href="#genome-explorer" role="button">Explore Genomes</a>
+        <a class="btn btn-outline-light ms-2" href="#genome-explorer" role="button">Explore Genomes</a>
        
 
     </section><!-- /Hero Section -->
@@ -322,7 +327,7 @@
           <p>Answer the following genomic and lifestyle questions to estimate your potential disease risk.</p>
         </div>
 
-        <section id="risk-assessment" class="py-5">
+        <section id="risk-assessment " class="py-5">
           <div class="container">
             <div class="row">
               
@@ -387,7 +392,7 @@
 
                   <!-- Submit -->
                   <div class="text-center mt-4">
-                    <button type="submit" class="btn btn-primary px-4 rounded-5">Submit Assessment</button>
+                    <button type="submit" class="btn btn-primary px-4 rounded-5 mx-auto">Submit Assessment</button>
                   </div>
                 </form>
               </div>
@@ -396,7 +401,7 @@
               <div class="col-md-6">
                 <div id="resultsBox" class="p-4 rounded shadow text-center">
                   <h5 class="mb-3">Assessment Results</h5>
-                  <p id="resultText" class="text-white">⚡ No results yet. Submit the form to see your risk assessment.</p>
+                  <p id="resultText">⚡ No results yet. Submit the form to see your risk assessment.</p>
                   <p id="recommendation" class="mt-2" style="display:none;">
                     For more accurate genetic insights, 
                     <a href="#" class="best-link">click here</a> to explore advanced DNA analysis.
@@ -415,7 +420,7 @@
 
           <!-- Section Title -->
           <div class="section-title text-center mb-5">
-            <h2 class="text-white">Research Case Study Gallery</h2>
+            <h2>Research Case Study Gallery</h2>
             <p class="text-white-50">
               Explore real-world bioinformatics and genomic research with interactive data insights.
               Click on a case study to explore its findings.
@@ -431,8 +436,8 @@
                 <img src="assets/img/DNA-lab.jpg" alt="Whole Genome Study" class="case-img">
                 <div class="case-overlay p-4">
                   <h5 class="fw-bold mb-4">Cohort A: Genome Study</h5>
-                  <p class="text-white-50">Population-scale WGS identifying rare variants linked to metabolic traits.</p>
-                  <button class="btn btn-outline-light btn-sm mt-2" onclick="openCaseModal(1)">
+                  <p>Population-scale WGS identifying rare variants linked to metabolic traits.</p>
+                  <button class="btn btn-outline-light btn-sm mt-2 mx-auto" onclick="openCaseModal(1)">
                     View Data Insights
                   </button>
                 </div>
@@ -445,8 +450,8 @@
                 <img src="assets/img/research-scientists.jpeg" alt="CRISPR Study" class="case-img">
                 <div class="case-overlay p-4">
                   <h5 class="fw-bold mb-4">CRISPR Cell Line Study</h5>
-                  <p class="text-white-50">Identifying cell proliferation regulators via high-throughput CRISPR screening.</p>
-                  <button class="btn btn-outline-light btn-sm mt-2" onclick="openCaseModal(2)">
+                  <p>Identifying cell proliferation regulators via high-throughput CRISPR screening.</p>
+                  <button class="btn btn-outline-light btn-sm mt-2 mx-auto" onclick="openCaseModal(2)">
                     View Data Insights
                   </button>
                 </div>
@@ -459,8 +464,8 @@
                 <img src="assets/img/genomics-microbiology-lab.png" alt="Pharmacogenomics Study" class="case-img">
                 <div class="case-overlay p-4">
                   <h5 class="fw-bold mb-4">Pharmacogenomic Panel</h5>
-                  <p class="text-white-50">Panel-based profiling for optimized drug response in clinical trials.</p>
-                  <button class="btn btn-outline-light btn-sm mt-2" onclick="openCaseModal(3)">
+                  <p>Panel-based profiling for optimized drug response in clinical trials.</p>
+                  <button class="btn btn-outline-light btn-sm mt-2 mx-auto" onclick="openCaseModal(3)">
                     View Data Insights
                   </button>
                 </div>
@@ -487,93 +492,6 @@
           </div>
         </div>
       </div>
-
-    <!-- Doctors Section -->
-    <section id="doctors" class="doctors section">
-
-      <!-- Section Title -->
-      <div class="container section-title" data-aos="fade-up">
-        <h2>Doctors</h2>
-        <p>Necessitatibus eius consequatur ex aliquid fuga eum quidem sint consectetur velit</p>
-      </div><!-- End Section Title -->
-
-      <div class="container">
-
-        <div class="row gy-4">
-
-          <div class="col-lg-6" data-aos="fade-up" data-aos-delay="100">
-            <div class="team-member d-flex align-items-start">
-              <div class="pic"><img src="assets/img/doctors/doctors-1.jpg" class="img-fluid" alt=""></div>
-              <div class="member-info">
-                <h4>Walter White</h4>
-                <span>Chief Medical Officer</span>
-                <p>Explicabo voluptatem mollitia et repellat qui dolorum quasi</p>
-                <div class="social">
-                  <a href=""><i class="bi bi-twitter-x"></i></a>
-                  <a href=""><i class="bi bi-facebook"></i></a>
-                  <a href=""><i class="bi bi-instagram"></i></a>
-                  <a href=""> <i class="bi bi-linkedin"></i> </a>
-                </div>
-              </div>
-            </div>
-          </div><!-- End Team Member -->
-
-          <div class="col-lg-6" data-aos="fade-up" data-aos-delay="200">
-            <div class="team-member d-flex align-items-start">
-              <div class="pic"><img src="assets/img/doctors/doctors-2.jpg" class="img-fluid" alt=""></div>
-              <div class="member-info">
-                <h4>Sarah Jhonson</h4>
-                <span>Anesthesiologist</span>
-                <p>Aut maiores voluptates amet et quis praesentium qui senda para</p>
-                <div class="social">
-                  <a href=""><i class="bi bi-twitter-x"></i></a>
-                  <a href=""><i class="bi bi-facebook"></i></a>
-                  <a href=""><i class="bi bi-instagram"></i></a>
-                  <a href=""> <i class="bi bi-linkedin"></i> </a>
-                </div>
-              </div>
-            </div>
-          </div><!-- End Team Member -->
-
-          <div class="col-lg-6" data-aos="fade-up" data-aos-delay="300">
-            <div class="team-member d-flex align-items-start">
-              <div class="pic"><img src="assets/img/doctors/doctors-3.jpg" class="img-fluid" alt=""></div>
-              <div class="member-info">
-                <h4>William Anderson</h4>
-                <span>Cardiology</span>
-                <p>Quisquam facilis cum velit laborum corrupti fuga rerum quia</p>
-                <div class="social">
-                  <a href=""><i class="bi bi-twitter-x"></i></a>
-                  <a href=""><i class="bi bi-facebook"></i></a>
-                  <a href=""><i class="bi bi-instagram"></i></a>
-                  <a href=""> <i class="bi bi-linkedin"></i> </a>
-                </div>
-              </div>
-            </div>
-          </div><!-- End Team Member -->
-
-          <div class="col-lg-6" data-aos="fade-up" data-aos-delay="400">
-            <div class="team-member d-flex align-items-start">
-              <div class="pic"><img src="assets/img/doctors/doctors-4.jpg" class="img-fluid" alt=""></div>
-              <div class="member-info">
-                <h4>Amanda Jepson</h4>
-                <span>Neurosurgeon</span>
-                <p>Dolorum tempora officiis odit laborum officiis et et accusamus</p>
-                <div class="social">
-                  <a href=""><i class="bi bi-twitter-x"></i></a>
-                  <a href=""><i class="bi bi-facebook"></i></a>
-                  <a href=""><i class="bi bi-instagram"></i></a>
-                  <a href=""> <i class="bi bi-linkedin"></i> </a>
-                </div>
-              </div>
-            </div>
-          </div><!-- End Team Member -->
-
-        </div>
-
-      </div>
-
-    </section><!-- /Doctors Section -->
 
     <!-- Contact Section -->
     <section id="contact" class="contact section">
@@ -644,7 +562,7 @@
                   <div class="error-message"></div>
                   <div class="sent-message">Your message has been sent. Thank you!</div>
 
-                  <button type="submit">Send Message</button>
+                  <button type="submit" class="mx-auto">Send Message</button>
                 </div>
 
               </div>
@@ -676,12 +594,13 @@
           <p class="mt-3"><strong>Phone:</strong> <span>+63 912 345 6789</span></p>
           <p><strong>Email:</strong> <span>contact@biogenomichub.com</span></p>
         </div>
-        <div class="social-links d-flex mt-4">
+
+        <!-- <div class="social-links d-flex mt-4">
           <a href=""><i class="bi bi-twitter-x"></i></a>
           <a href=""><i class="bi bi-facebook"></i></a>
           <a href=""><i class="bi bi-instagram"></i></a>
           <a href=""><i class="bi bi-linkedin"></i></a>
-        </div>
+        </div> -->
       </div>
 
       <!-- Right Section: Links grouped together -->
@@ -721,7 +640,7 @@
   </div>
 
     <div class="container copyright text-center mt-4">
-      <p>© <span>Copyright</span> <strong class="px-1 sitename">BioGenomics Hub</strong>. <span>All Rights Reserved</span></p>
+      <p>© <span>Copyright</span> <strong class="sitename px-1">BioGenomics Hub</strong>. <span>All Rights Reserved</span></p>
         <p>Empowering Life Sciences Through Data, Discovery, and Innovation.</p>
     </div>
 
