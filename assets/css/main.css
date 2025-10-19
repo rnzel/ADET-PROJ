@@ -481,6 +481,25 @@ h6 {
     margin-right: 10px;
     cursor: pointer;
     transition: color 0.3s;
+    order: 3;
+  }
+
+  .sitename {
+    font-size: 16px;
+  }
+
+  .cta-btn {
+    font-size: 14px;
+    padding: 6px 10px;
+  }
+
+  #theme-toggle {
+    padding: 6px 8px;
+    font-size: 14px;
+  }
+
+  .header-buttons {
+    gap: 6px;
   }
 
   .navmenu {
@@ -595,6 +614,11 @@ h6 {
 
   .mobile-nav-active .navmenu>ul {
     display: block;
+  }
+
+  .navmenu ul li a {
+    font-size: 14px;
+    padding: 6px 8px;
   }
 }
 
@@ -1720,6 +1744,18 @@ section,
 /*--------------------------------------------------------------
 # Starter Section Section
 --------------------------------------------------------------*/
+#header .container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.header-buttons {
+  display: flex;
+  align-items: center;
+  gap: 8px; 
+  margin-right: auto;
+}
 
 button {
   display: flex;
@@ -2192,9 +2228,16 @@ hr {
   width: auto !important;
   display: block;
   margin: 0 auto;
+
 }
 .modal-lg {
   max-width: 800px;
+}
+
+.modal-body {
+  background: #090C2B;
+  text-align: center;
+  padding: 20px 30px;
 }
 
 .modal-body {
@@ -2400,7 +2443,7 @@ body.light-mode .case-overlay {
 }
 
 body.light-mode .modal-body {
-  background-color: ;
+  color: white;
 }
 
 body.light-mode .contact .php-email-form input[type=text],
