@@ -631,3 +631,5 @@ function openCaseModal(caseId) {
       localStorage.setItem('theme', 'dark');
     }
   });
+
+  

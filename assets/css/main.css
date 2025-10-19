@@ -218,6 +218,7 @@ h6 {
 # Global Header
 --------------------------------------------------------------*/
 .header {
+  align-items: center;
   color: var(--default-color);
   transition: all 0.5s;
   z-index: 997;
@@ -473,41 +474,56 @@ h6 {
 }
 
 /* Mobile Navigation */
-@media (max-width: 768px) {
+@media (max-width: 1200px) {
   .mobile-nav-toggle {
     color: var(--nav-color);
     font-size: 28px;
     line-height: 0;
-    margin-right: 10px;
     cursor: pointer;
     transition: color 0.3s;
-    order: 3;
   }
 
   .sitename {
     font-size: 16px;
   }
 
-  .cta-btn {
+  .logo {
+    display: flex;
+    align-items: center;
+  }
+
+  .header .cta-btn {
     font-size: 14px;
     padding: 6px 10px;
   }
 
   #theme-toggle {
+    order: 2;
     padding: 6px 8px;
     font-size: 14px;
   }
 
-  .header-buttons {
-    gap: 6px;
+  .header .container {
+    display: flex;
+    width: 90%;
+    align-items: center;
+    justify-content: space-between;
   }
 
-  .navmenu {
+  .header-buttons {
+    order: 2;
+  }
+
+  #navmenu {
+    order: -1;
+    margin-right: auto;
     padding: 0;
     z-index: 9997;
+    flex: 0 0 auto;
   }
 
   .navmenu ul {
+    order: -1;
     display: none;
     list-style: none;
     position: absolute;
@@ -1754,7 +1770,7 @@ section,
   display: flex;
   align-items: center;
   gap: 8px; 
-  margin-right: auto;
+  margin-left: auto;
 }
 
 button {
